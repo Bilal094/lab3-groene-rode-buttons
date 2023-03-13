@@ -3,6 +3,8 @@ container.style.backgroundColor = "gray";
 container.style.display = 'inline-block';
 container.style.marginLeft = "30%"
 
+var counter = 0;
+
 for (i = 1; i <= 30; i++) {
     var numberButton = document.createElement("button");
     numberButton.style.backgroundColor = "green"
@@ -23,6 +25,14 @@ for (i = 1; i <= 30; i++) {
 }
 
 function changeColor () {
-    console.log(this);
-    this.style.backgroundColor = "red";
+    const colors = ["green","red", "purple", "blue", "black"];
+    var colorIndex = colors.indexOf(this.style.backgroundColor);
+    var index = colorIndex;
+    this.style.backgroundColor = colors[colorIndex + 1];
+    index++;
+
+    if (index % (colors.length) === 0) {
+        this.remove();
+        index = 0;
+    }
 }
